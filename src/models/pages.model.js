@@ -31,3 +31,4 @@ module.exports = function (app) {
 
   return pages;
 };
+ 
