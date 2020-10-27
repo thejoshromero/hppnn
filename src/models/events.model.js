@@ -19,7 +19,7 @@ module.exports = function (app) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    geo_loaction: {
+    geo_location: {
       type: DataTypes.GEOGRAPHY('POINT'),
       allowNull: true
     },
@@ -48,7 +48,7 @@ module.exports = function (app) {
       allowNull: false
     },
     is_public: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.BOOLEAN,
       allowNull: false
     },
     event_type: {
