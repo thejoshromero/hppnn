@@ -20,7 +20,7 @@ module.exports = function (app) {
       allowNull: false
     },
     geo_location: {
-      type: DataTypes.GEOGRAPHY('POINT'),
+      type: DataTypes.GEOMETRY('POINT'),
       allowNull: true
     },
     street_1: {
