@@ -6,11 +6,74 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const events = sequelizeClient.define('events', {
-    text: {
-      type: DataTypes.STRING,
+    event_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+      primary key: true
+    },
+    start_time: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    duration: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    geo_loaction: {
+      type: DataTypes.GEOGRAPHY('POINT'),
+      allowNull: true
+    },
+    street_1: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    street_2: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    city: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    state: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    zip_code: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    is_public: {
+      type: DataTypes.TINYINT,
+      allowNull: false
+    },
+    event_type: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    name: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    image_source: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    creator_user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    attendee_limit: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
-  }, {timestamps:false,
+    
+  }, 
+  { timestamps:false,
     hooks: {
       beforeCount(options) {
         options.raw = true;
