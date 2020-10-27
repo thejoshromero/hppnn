@@ -6,11 +6,24 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const friends = sequelizeClient.define('friends', {
-    text: {
-      type: DataTypes.STRING,
+    friend_link_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    friend_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    status: {
+      type: DataTypes.ENUM('Friend', 'Removed'),
       allowNull: false
     }
-  }, {
+  }, { timestamps:false,
     hooks: {
       beforeCount(options) {
         options.raw = true;
