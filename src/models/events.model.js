@@ -8,8 +8,8 @@ module.exports = function (app) {
   const events = sequelizeClient.define('events', {
     event_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
-      primary key: true
+      allowNull: false,
+      primaryKey: true
     },
     start_time: {
       type: DataTypes.DATE,
