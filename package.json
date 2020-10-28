@@ -50,6 +50,7 @@
     "mysql2": "^2.2.5",
     "nodejs": "0.0.0",
     "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.3.3"
   },
