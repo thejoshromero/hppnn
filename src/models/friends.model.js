@@ -46,8 +46,8 @@ module.exports = function (app) {
   friends.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    Friends.belongsToMany(Users, {as: 'SourceFriend', foreignKey: 'user_id'});
-    Friends.belongsToMany(Users, {as: 'Friend', foreignKey: 'friend_id'});
+    friends.belongsToMany(Users, {as: 'SourceFriend', foreignKey: 'user_id'});
+    friends.belongsToMany(Users, {as: 'Friend', foreignKey: 'friend_id'});
   };
 
   return friends;
