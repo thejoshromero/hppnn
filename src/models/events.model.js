@@ -91,7 +91,7 @@ module.exports = function (app) {
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
     //events.hasOne(EventTypes, {through: 'event_type'});
     //events.hasOne('event_types', {foreignKey: 'event_type'});
-    events.hasOne(models.event_type,{});
+    //events.hasOne(models.event_type,{});
 
   };
 
