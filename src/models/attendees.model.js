@@ -1,6 +1,9 @@
+/* eslint-disable linebreak-style */
 // See http://docs.sequelizejs.com/en/latest/docs/models-definition/
 // for more of what you can do here.
 const Sequelize = require('sequelize');
+const { Events } = require('../services/events/events.class');
+const { Users } = require('../services/users/users.class');
 const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
@@ -35,6 +38,8 @@ module.exports = function (app) {
   attendees.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    attendees.hasOne(Events, {through: 'event_id'});
+    attendees.hasOne(Users, {through: 'user_id'});
   };
 
   return attendees;

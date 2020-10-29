@@ -1,6 +1,9 @@
+/* eslint-disable linebreak-style */
 // See http://docs.sequelizejs.com/en/latest/docs/models-definition/
 // for more of what you can do here.
 const Sequelize = require('sequelize');
+const { Friends } = require('../services/friends/friends.class');
+const { Users } = require('../services/users/users.class');
 const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
@@ -13,11 +16,19 @@ module.exports = function (app) {
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'user_id'
+      }
     },
     friend_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'user_id'
+      }
     },
     status: {
       type: DataTypes.ENUM('Friend', 'Removed'),
@@ -35,6 +46,8 @@ module.exports = function (app) {
   friends.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    Friends.belongsToMany(Users, {as: 'SourceFriend', foreignKey: 'user_id'});
+    Friends.belongsToMany(Users, {as: 'Friend', foreignKey: 'friend_id'});
   };
 
   return friends;

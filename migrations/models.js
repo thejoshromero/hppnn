@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const Sequelize = require('sequelize');
 const app = require('../src/app');
 const sequelize = app.get('sequelizeClient');
