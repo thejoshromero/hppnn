@@ -2,7 +2,9 @@
 // See http://docs.sequelizejs.com/en/latest/docs/models-definition/
 // for more of what you can do here.
 const Sequelize = require('sequelize');
-const { EventTypes } = require('../services/event_types/event_types.class');
+//const event_typesModel = require('./event_types.model');
+
+
 const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
@@ -53,7 +55,7 @@ module.exports = function (app) {
       type: DataTypes.BOOLEAN,
       allowNull: false
     },
-    event_type: {
+    event_type_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -87,7 +89,10 @@ module.exports = function (app) {
   events.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    events.hasOne(EventTypes, {through: 'event_type'});
+    //events.hasOne(EventTypes, {through: 'event_type'});
+    //events.hasOne('event_types', {foreignKey: 'event_type'});
+    events.hasOne(models.event_type,{});
+
   };
 
   return events;

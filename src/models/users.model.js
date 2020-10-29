@@ -1,6 +1,8 @@
 // See http://docs.sequelizejs.com/en/latest/docs/models-definition/
 // for more of what you can do here.
 const Sequelize = require('sequelize');
+//const { Friends } = require('../services/friends/friends.class');
+//const { Users } = require('../services/users/users.class');
 const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
@@ -73,6 +75,7 @@ module.exports = function (app) {
   users.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+
   };
 
   return users;
