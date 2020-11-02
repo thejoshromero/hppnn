@@ -12,8 +12,15 @@ module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const friends = sequelizeClient.define('friends', {
  
-   
-  
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    friendId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+
+    },
     status: {
       type: DataTypes.ENUM('Friend', 'Removed'),
       allowNull: false
