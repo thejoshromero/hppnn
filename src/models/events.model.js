@@ -10,11 +10,7 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const events = sequelizeClient.define('events', {
-    event_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true
-    },
+  
     start_time: {
       type: DataTypes.DATE,
       allowNull: false
@@ -55,10 +51,7 @@ module.exports = function (app) {
       type: DataTypes.BOOLEAN,
       allowNull: false
     },
-    event_type_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
+
     name: {
       type: DataTypes.TEXT,
       allowNull: false
@@ -67,10 +60,7 @@ module.exports = function (app) {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    creator_user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
+  
     attendee_limit: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -89,7 +79,10 @@ module.exports = function (app) {
   events.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    //events.hasOne(EventTypes, {through: 'event_type'});
+   
+    events.hasOne(models.users,{as: 'creator'});
+    //Project.hasMany(User, {as: 'Workers'})
+    events.belongsToMany(models.users, {through: 'attendees'});
     //events.hasOne('event_types', {foreignKey: 'event_type'});
     //events.hasOne(models.event_type,{});
 

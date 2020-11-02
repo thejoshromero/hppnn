@@ -8,11 +8,7 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const eventTypes = sequelizeClient.define('event_types', {
-    event_type_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true
-    },
+ 
     name: {
       type: DataTypes.TEXT,
       allowNull: false
@@ -23,11 +19,8 @@ module.exports = function (app) {
     image_source: {
       type: DataTypes.TEXT,
       allowNull: false
-    },
-    parent_event_type: {
-      type: DataTypes.INTEGER,
-      allowNull: false
     }
+  
   }, { timestamps:false,
     hooks: {
       beforeCount(options) {
@@ -38,8 +31,9 @@ module.exports = function (app) {
 
   // eslint-disable-next-line no-unused-vars
   eventTypes.associate = function (models) {
-    // Define associations here
+    // Define associations here 
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    eventTypes.hasMany(models.events, {});
   };
 
   return eventTypes;

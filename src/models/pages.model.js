@@ -10,9 +10,7 @@ module.exports = function (app) {
     body: {
       type: DataTypes.TEXT
     },
-    misc_page_id: {
-      type: DataTypes.INTEGER, primaryKey: true
-    },
+ 
     title: {
       type: DataTypes.TEXT,
     }
