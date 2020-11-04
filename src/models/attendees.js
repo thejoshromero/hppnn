@@ -1,6 +1,9 @@
 /* eslint-disable linebreak-style */
-const attendees = (sequelize, DataTypes) =>
-  sequelize.define('attendees', {
+const Sequelize = require('sequelize');
+const DataTypes = Sequelize.DataTypes;
+module.exports = function (app) {
+  const sequelizeClient = app.get('sequelizeClient');
+  const attendees = sequelizeClient.define('attendees', {
     status: {
       type: DataTypes.ENUM(
         'going',
@@ -8,6 +11,20 @@ const attendees = (sequelize, DataTypes) =>
       ),
       allowNull: false
     }
+  }, 
+  { timestamps:false,
+    hooks: {
+      beforeCount(options) {
+        options.raw = true;
+      }
+    }
   });
 
-module.exports = attendees;
+  // eslint-disable-next-line no-unused-vars
+  attendees.associate = function (models) {
+    // Define associations here
+    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+   
+  };
+  return attendees;
+};
