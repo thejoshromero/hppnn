@@ -10,7 +10,7 @@ module.exports = function (app) {
         'invited','rejected'
       ),
       allowNull: false
-    }
+    } 
   }, 
   { timestamps:false,
     hooks: {
@@ -18,12 +18,13 @@ module.exports = function (app) {
         options.raw = true;
       }
     }
-  });
+  }); 
 
   // eslint-disable-next-line no-unused-vars
   attendees.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    attendees.hasMany(models.events,{});
    
   };
   return attendees;

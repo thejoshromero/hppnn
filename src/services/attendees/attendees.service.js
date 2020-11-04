@@ -1,8 +1,8 @@
 /* eslint-disable linebreak-style */
-// Initializes the `friends` service on path `/friends`
-const { Friends } = require('./friends.class');
-const createModel = require('../../models/friends.model');
-const hooks = require('./friends.hooks');
+// Initializes the `events` service on path `/events`
+const { Events } = require('./attendees.class');
+const createModel = require('../../models/attendees.model');
+const hooks = require('./attendees.hooks');
 
 module.exports = function (app) {
   const options = {
@@ -11,10 +11,10 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/friends', new Friends(options, app));
+  app.use('/attendees', new Events(options, app));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('friends');
+  const service = app.service('attendees');
 
   service.hooks(hooks);
 };

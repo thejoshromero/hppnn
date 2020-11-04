@@ -22,7 +22,7 @@ module.exports = function (app) {
       if ('associate' in models[name]) {
         models[name].associate(models);
       }
-    });
+    }); 
 
     // Sync to the database
     app.set('sequelizeSync', sequelize.sync());

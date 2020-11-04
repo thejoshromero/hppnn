@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 // Initializes the `events` service on path `/events`
 const { Events } = require('./events.class');
 const createModel = require('../../models/events.model');
