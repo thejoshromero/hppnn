@@ -73,6 +73,7 @@ module.exports = function (app) {
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
     users.belongsToMany(models.users, {as: 'friend', through: 'friends', foreignKey: 'friendId'});
     users.belongsToMany(models.users, {as: 'user', through: 'friends', foreignKey: 'userId'});
+    users.hasMany(models.events,{foreignKey: 'creator'});
 
   };
 

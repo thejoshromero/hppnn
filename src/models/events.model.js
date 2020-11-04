@@ -19,6 +19,10 @@ module.exports = function (app) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    creator: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     geo_location: {
       type: DataTypes.GEOMETRY('POINT'),
       allowNull: true
@@ -80,7 +84,7 @@ module.exports = function (app) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
    
-    events.hasOne(models.users,{as: 'creator'});
+    
     //Project.hasMany(User, {as: 'Workers'})
     events.belongsToMany(models.users, {through: 'attendees'});
     //events.hasOne('event_types', {foreignKey: 'event_type'});
