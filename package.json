@@ -49,6 +49,7 @@
     "helmet": "^4.1.1",
     "mysql2": "^2.2.5",
     "nodejs": "0.0.0",
+    "react": "^17.0.1",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0",
     "serve-favicon": "^2.5.0",
