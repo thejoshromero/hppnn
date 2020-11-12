@@ -1,25 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import api from './services/api'
 
-function App() {
+const App = () =>{ 
+  const [users, setUsers] = useState([])
+
+  const getUsers = () => {
+    const response = api.service('users').find({})
+    setUsers(response.data)
+  } 
+  let usersLoaded = false
+  if (!usersLoaded){
+    getUsers()
+    usersLoaded=true
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+    
+    
+    <div className="users">
+      <ul>
+      {users &&
+        users.map((user,index)=>{
+          return (<li>{user.name}</li>)
+        })
+      }
+      </ul>
     </div>
-  );
-}
+ 
+)};
 
 export default App;
