@@ -1,50 +1,26 @@
-import logo from './logo.svg';
+
 import './App.css';
-import React, { useState } from 'react';
-import api from './services/api'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import api from './services/api';
 
 function App(){ 
   const [users, setUsers] =  useState(null)
-  const apiURL = 'http://localhost:3030/users';
-
+  
   const getUsers = async () => {
-    const response = await api.service('users').find({
-      query:{
-        id:{
-          $gt: 0
-        }
-      }
-    });//axios.get(apiURL);
+    const response = await api.service('users').find({});
     setUsers(response.data)
   } 
-  // let usersLoaded = false
-  // if (!usersLoaded){
-  //   getUsers()
-  //   usersLoaded=true
-  // }
-  
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
-  
-    
-    
     <div className="app">
       <h1>HPPNN Users</h1>
-      <h2>Fetch the users</h2>
-      <div>
-        <button className="fetch-button" onClick={getUsers}>
-          Fetch Data
-        </button>
-        <br/>
-      </div>
-
-
       <div className="users">
-
       {users && users.map((user,index)=>{
           const uname = user.user_name;
-
-
           return (
               <div className="user" key={index}>
                 <h2>{uname}</h2>
@@ -55,14 +31,9 @@ function App(){
                     <p>Location: <br/> lat={user.geo_location.coordinates[0]} <br/> long={user.geo_location.coordinates[1]} </p>
                   </div>
               </div>
-
           );
         })}
-      
     </div>
     </div>
- 
 )};
-
-
 export default App;
