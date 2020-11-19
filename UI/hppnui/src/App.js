@@ -37,25 +37,12 @@ function App(){
       onViewportChange={nextViewport => setViewport(nextViewport)}
     >
 {users && users.map((user,index)=>{
-          const uname = user.user_name;
-         
-          
           return (
             <Marker longitude={user.geo_location.coordinates[1]} latitude={user.geo_location.coordinates[0]}>
         <div style={{color: "white",
       backgroundColor: "DodgerBlue",
       padding: ".5px"}}>{user.user_name}</div>
         </Marker>
-              // <div className="user" key={index}>
-              //   <h2>{uname}</h2>
-              //     <h3>User {index+1}</h3>
-              //     <h3>{user.name}</h3>
-              //     <div className="details">
-              //       <p>bio: {user.bio}</p>
-              //       <p>Location: <br/> lat={user.geo_location.coordinates[0]} <br/> long={user.geo_location.coordinates[1]} </p>
-                    
-              //     </div>
-              // </div>
           );
         })}
 
