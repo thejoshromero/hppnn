@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 
 import ReactMapGL, {Marker} from 'react-map-gl';
+import Card from 'react-bootstrap/Card'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -58,16 +59,29 @@ padding: ".5px"}}>{user.user_name}</div>
    
     
     return (
-        <div className="user" key={index}>
-          <h2>{uname}</h2>
-            <h3>User {index+1}</h3>
-            <h3>{user.name}</h3>
-            <div className="details">
-              <p>bio: {user.bio}</p>
-              <p>Location: <br/> lat={user.geo_location.coordinates[0]} <br/> long={user.geo_location.coordinates[1]} </p>
+      
+<Card style={{ width: '18rem' }}>
+<Card.Header as="h5">@{uname}</Card.Header>
+  <Card.Body>
+    
+    <Card.Subtitle className="mb-2 text-muted">{user.name}</Card.Subtitle>
+    <Card.Text>
+      {user.bio}
+    </Card.Text>
+    <Card.Link href="#">Add Friend</Card.Link>
+  </Card.Body>
+</Card>
+
+        // <div className="user" key={index}>
+        //   <h2>{uname}</h2>
+        //     <h3>User {index+1}</h3>
+        //     <h3>{user.name}</h3>
+        //     <div className="details">
+        //       <p>bio: {user.bio}</p>
+        //       <p>Location: <br/> lat={user.geo_location.coordinates[0]} <br/> long={user.geo_location.coordinates[1]} </p>
               
-            </div>
-        </div>
+        //     </div>
+        // </div>
     );
   })}
 </div>

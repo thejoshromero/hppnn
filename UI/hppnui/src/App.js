@@ -13,6 +13,8 @@ import Nav from 'react-bootstrap/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as Icon from 'react-bootstrap-icons';
 import UserPage from './components/UserPage';
+import HomePage from './components/HomePage';
+import MapEventsPage from './components/MapEventsPage'
 
 function App(){ 
  
@@ -39,13 +41,16 @@ function App(){
 //   </Nav.Item>
 // </Nav>
 <div>
- <BrowserRouter>
+  <div></div>
+ <BrowserRouter > 
         <div>
       <Navigation/> 
              <Switch>
-             <Route path="/UserPage" component={UserPage} exact/>
-             <Route path="/MapPage" component={MapPage} exact/>
-            <Route component={Error}/>
+             <Route path="/UserPage" component={UserPage}/>
+             <Route path="/HomePage" component={HomePage}/>
+             <Route path="/MapPage" component={MapPage}/>
+             <Route path="/MapEventsPage" component={MapEventsPage}/>
+             <Route component={Error}/>
            </Switch> 
         </div> 
       </BrowserRouter> 

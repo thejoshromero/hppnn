@@ -1,26 +1,33 @@
 import React from 'react';
  
-import { NavLink } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Nav'
 import * as Icon from 'react-bootstrap-icons';
  
 const Navigation = () => {
     return (
+     
         <div>
-        <div>
-              <Nav fill variant="tabs" defaultActiveKey="/home" bg="dark" >
+           
+              <Navbar fill variant="tabs" defaultActiveKey="/home" bg="dark" fixed="bottom" sticky="bottom">
    <Nav.Item>
-    <Nav.Link to="/UserPage" ><Icon.House/>UserPage</Nav.Link>
+    <Link to="/HomePage" className="nav-link"><Icon.House/></Link>
    </Nav.Item>
-   </Nav>
+   <Nav.Item>
+    <Link to="/MapEventsPage" className="nav-link"><Icon.GeoAlt/></Link>
+   </Nav.Item>
+   <Nav.Item>
+    <Link to="/MapPage" className="nav-link"><Icon.Search/></Link>
+   </Nav.Item>
+   <Nav.Item>
+    <Link to="/UserPage" className="nav-link"><Icon.PersonCircle/></Link>
+   </Nav.Item>
+   </Navbar>
         </div>
-       <div>
-          <NavLink to="../App">Home</NavLink>
-          <NavLink to="/UserPage">UserPage</NavLink> 
-          <NavLink to="/MapPage">Map</NavLink>
+       
 
-       </div>
-       </div>
+
     );
 }
  
