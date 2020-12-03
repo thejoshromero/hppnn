@@ -3,6 +3,7 @@ import api from '../services/api';
 
 import ReactMapGL, {Marker} from 'react-map-gl';
 import Card from 'react-bootstrap/Card'
+import HppnnLogo from '../HppnnLogo';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -61,7 +62,7 @@ padding: ".5px"}}>{user.user_name}</div>
     return (
       
 <Card style={{ width: '18rem' }}>
-<Card.Header as="h5">@{uname}</Card.Header>
+<Card.Header as="h5"><HppnnLogo className="App-logo"/>  {uname}</Card.Header>
   <Card.Body>
     
     <Card.Subtitle className="mb-2 text-muted">{user.name}</Card.Subtitle>
