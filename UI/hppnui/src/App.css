@@ -14,6 +14,12 @@
   pointer-events: none;
 }
 
+.App-logo-title {
+  height: 15vmin;
+  width: 80vmin;
+  pointer-events: none;
+}
+
 .User-Image {
   height: 10vmin;
   width: 12vmin;
