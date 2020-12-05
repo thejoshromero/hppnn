@@ -3,6 +3,12 @@
 }
 
 .App-logo {
+  height: 15vmin;
+  width: 30vmin;
+  pointer-events: none;
+}
+
+.App-logo-marker {
   height: 3.5vmin;
   width: 3.5vmin;
   pointer-events: none;
@@ -29,6 +35,9 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
+    animation: App-logo-spin2 infinite 2s linear;
+  }
+  .App-logo-marker {
     animation: App-logo-spin infinite 20s linear;
   }
 }
@@ -54,5 +63,14 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
   }
 }

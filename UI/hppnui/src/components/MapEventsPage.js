@@ -15,7 +15,7 @@ const MapEventsPage = () => {
   const [events, setEvents] = useState(null);
   const [showA, setShowA] = useState(true);
   const [viewport, setViewport] = useState({
-    width: 400,
+    width: '100%',
     height: 400,
     latitude: 38.4351,
     longitude: -78.8698,
@@ -46,6 +46,7 @@ const MapEventsPage = () => {
           mapStyle="mapbox://styles/mapbox/outdoors-v11"
           {...viewport}
           onViewportChange={(nextViewport) => setViewport(nextViewport)}
+         
         >
           {events &&
             events.map((event, index) => {
@@ -57,7 +58,7 @@ const MapEventsPage = () => {
                   <Icon.GeoAlt />
                   <Toast show={showA} onClose={toggleShowA}>
           <Toast.Header>
-            <HppnnLogo className="App-logo"/>
+            <HppnnLogo className="App-logo-marker"/>
             <strong className="mr-auto">{event.name}</strong>
             <small>{event.start_time}</small>
           </Toast.Header>
