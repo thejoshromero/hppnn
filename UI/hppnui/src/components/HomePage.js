@@ -15,7 +15,7 @@ const HomePage = () => {
         setEvents(response.data);
       };
       const getEvents2 = async () => {
-        const response = await api.service("events").find({query: { id: 2 } });
+        const response = await api.service("events").find({query: { id: {$gt: 1} } });
         setEvents2(response.data);
       };
 

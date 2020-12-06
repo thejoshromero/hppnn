@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import api from "../services/api";
 import HppnnLogoBig from "../HppnnLogoBig";
 import HppnnLogo from "../HppnnLogo";
+import Card from "react-bootstrap/Card";
 
 import ReactMapGL, { Marker } from "react-map-gl";
 
@@ -92,13 +93,21 @@ const MapEventsPage = () => {
           events.map((event, index) => {
             return (
               <Carousel.Item style={{'height':"300px"}} >
-                <Carousel.Caption>
-                  <h3 style={{'color':"blue"}} >{event.name}</h3>
-                  <p style={{'color':"black"}}>{event.description}</p>
-                  <p style={{'color':"black"}}>{event.city}</p>
-                  {/* <p style={{'color':"black"}}>{event.state}</p> */}
-                  {/* <p style={{'color':"black"}}>{event.zip_code}</p> */}
-                  <p style={{'color':"black"}}>{event.start_time}</p>
+                <img src={event.image_source} alt="For Event" style={{'height':"300px"}}/>
+                <Carousel.Caption align="center">
+                <Container style={{'opacity':"80%", 'height':"50%", 'width':"50%", 'align':"center", 'background':"gray"}} align="center">
+            <h5 style={{'color':"blue"}}>
+              <HppnnLogo className="App-logo-marker" /> {event.name}
+            </h5>
+            <div>
+              <Card.Subtitle className="mb-2 text">
+                {event.description}
+              </Card.Subtitle>
+              <Card.Text className="mb-2 text">{event.city}</Card.Text>
+              <Card.Link href="#">Add Event</Card.Link>
+            </div>
+          </Container>
+                
                 </Carousel.Caption>
               </Carousel.Item>
             );

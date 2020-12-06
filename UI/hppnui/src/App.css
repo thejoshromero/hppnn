@@ -34,9 +34,9 @@
 
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  /* .App-logo {
     animation: App-logo-spin2 infinite 2s linear;
-  }
+  } */
   .App-logo-marker {
     animation: App-logo-spin infinite 20s linear;
   }

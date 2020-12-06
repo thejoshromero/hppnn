@@ -41,6 +41,7 @@ const MapPage = () => {
           <Card>
             <Card.Header as="h5">
               <HppnnLogo className="App-logo-marker" /> {item.user_name}
+              <img src={item.image_source} alt="UserPic" className="App-logo-small"/>
             </Card.Header>
             <Card.Body>
               <Card.Subtitle className="mb-2 text-muted">
