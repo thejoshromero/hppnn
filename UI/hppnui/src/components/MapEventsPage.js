@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
+import Jumbotron from "react-bootstrap/Jumbotron";
 import Toast from "react-bootstrap/Toast";
 import * as Icon from "react-bootstrap-icons";
 import Container from "react-bootstrap/Container";
@@ -8,12 +9,14 @@ import HppnnLogoBig from "../HppnnLogoBig";
 import HppnnLogo from "../HppnnLogo";
 import Card from "react-bootstrap/Card";
 
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
 
 
 const MapEventsPage = () => {
   const [events, setEvents] = useState(null);
+  const [showPopup, setShowPopup] = useState(null)
+  const [show, setShow] = useState(false);
   const [showA, setShowA] = useState(true);
   const [viewport, setViewport] = useState({
     width: '100%',
@@ -28,12 +31,40 @@ const MapEventsPage = () => {
     setEvents(response.data);
   };
 
+
+  const CustomPopup = ({index, marker, closePopup}) => {
+    return (
+      <Popup
+        latitude={marker.latitude}
+        longitude={marker.longitude}
+        onClose={closePopup}
+        closeButton={true}
+        closeOnClick={false}
+        offsetTop={-30}
+       >
+        <p>{marker.name}</p>
+      </Popup>
+    )};
+
+    const CustomMarker = ({index, marker, openPopup}) => {
+      return (
+        <Marker
+          longitude={marker.longitude}
+          latitude={marker.latitude}>
+          <div className="marker" onClick={() => openPopup(index)}>
+            <span><b>{index + 1}</b></span>
+          </div>
+        </Marker>
+    )};
+
+
   useEffect(() => {
     getEvents();
   }, []);
   return (
     <Container justify>
       <div>
+       
       <HppnnLogoBig className="App-logo-title"></HppnnLogoBig>
         <link
           href="https://api.tiles.mapbox.com/mapbox-gl-js/v<1.12.0>/mapbox-gl.css"
@@ -52,19 +83,29 @@ const MapEventsPage = () => {
           {events &&
             events.map((event, index) => {
               return (
-                <Marker
-                  longitude={event.geo_location.coordinates[1]}
-                  latitude={event.geo_location.coordinates[0]}
-                >
-                  <Icon.GeoAlt />
-                  <Toast show={showA} onClose={toggleShowA}>
+                
+               <div>
+              
+                  
+        <Marker 
+        longitude={event.geo_location.coordinates[1]}
+        latitude={event.geo_location.coordinates[0]}
+        closeButton={true}
+          closeOnClick={false}
+       
+          anchor="top"
+        >
+          <Icon.GeoAlt/>
+        
+<Toast >
           <Toast.Header>
             <HppnnLogo className="App-logo-marker"/>
             <strong className="mr-auto">{event.name}</strong>
             <small>{event.start_time}</small>
           </Toast.Header>
           <Toast.Body>{event.description}</Toast.Body>
-        </Toast>
+          </Toast>
+        </Marker>
                   {/* <div
                     style={{
                       color: "white",
@@ -76,7 +117,8 @@ const MapEventsPage = () => {
                     <div>{event.description}</div>
                   </div> */}
                  
-                </Marker>
+              
+              </div>
               );
             })}
         </ReactMapGL>

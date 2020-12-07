@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import api from "../services/api";
 
 import Card from "react-bootstrap/Card";
+import CardDeck from "react-bootstrap/CardDeck";
 import Container from "react-bootstrap/Container";
 import HppnnLogo from "../HppnnLogo";
 
@@ -35,10 +36,10 @@ const MapPage = () => {
         value={searchTerm}
         onChange={handleChange}
       />
-
+<CardDeck style={{display: 'flex', flexDirection: 'row'}}>
       {results &&
         results.map((item) => (
-          <Card>
+          <Card border="primary" style={{flex: 1}}>
             <Card.Header as="h5">
               <HppnnLogo className="App-logo-marker" /> {item.user_name}
               <img src={item.image_source} alt="UserPic" className="App-logo-small"/>
@@ -52,6 +53,7 @@ const MapPage = () => {
             </Card.Body>
           </Card>
         ))}
+        </CardDeck>
     </Container>
   );
 };

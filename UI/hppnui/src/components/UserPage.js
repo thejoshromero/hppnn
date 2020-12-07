@@ -1,7 +1,9 @@
 import api from "../services/api";
 import React, { useState, useEffect } from "react";
-import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 
@@ -27,34 +29,72 @@ const UserPage = () => {
 
           return (
             <Form>
-              <Container align="center">
-                <HppnnLogo className="App-logo" />{" "}
-                <img src={uimg} alt="userimg" className="User-Image" />
-              
-              </Container>
+              <Card border="success">
+                <Card.Header align="center">
+                  <HppnnLogo className="App-logo-small" />{" "}
+                  <Image
+                    src={uimg}
+                    alt="userimg"
+                    className="User-Image"
+                    roundedCircle
+                  />
+                </Card.Header>
 
-              <br />
-              <InputGroup>
-                <InputGroup.Prepend>
-                  <InputGroup.Text>@</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl
-                  id="inlineFormInputGroupUsername"
-                  placeholder={uname}
-                />
-              </InputGroup>
-              <Form.Group controlId="formName">
-                <Form.Label>Name:</Form.Label>
-                <Form.Control type="text" placeholder={user.name} />
-              </Form.Group>
-              <Form.Group controlId="formBio">
-                <Form.Label>Bio:</Form.Label>
-                <Form.Control type="text" placeholder={user.bio} />
-              </Form.Group>
-              <Form.Group controlId="formPhone">
-                <Form.Label>Phone Number:</Form.Label>
-                <Form.Control type="phone" placeholder={user.phone_number} />
-              </Form.Group>
+                <br />
+                <Form.Row className="align-items-center">
+                  <Col xs="auto" className="my-1">
+                    <Form.Label
+                      className="mr-sm-2"
+                      htmlFor="inlineFormCustomSelect"
+                      srOnly
+                    >
+                      Preference
+                    </Form.Label>
+                    <Form.Control
+                      as="select"
+                      className="mr-sm-2"
+                      id="inlineFormCustomSelect"
+                      custom
+                    >
+                      <option value="0">Choose...</option>
+                      <option value="1">Public</option>
+                      <option value="2">Private</option>
+                    </Form.Control>
+                  </Col>
+                  <Col xs="auto" className="my-1">
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>@</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <FormControl
+                        id="inlineFormInputGroupUsername"
+                        placeholder={uname}
+                      />
+                    </InputGroup>
+                  </Col>
+                </Form.Row>
+                <Form.Row className="align-items-center">
+                  <Col>
+                <Form.Group controlId="formName">
+                  <Form.Label>Name:  </Form.Label>
+                  <Form.Check inline type="checkbox" label="   Show?"/>
+                    
+                
+                  <Form.Control type="text" placeholder={user.name} />
+                </Form.Group>
+                </Col>
+                </Form.Row>
+                <Form.Group controlId="formBio">
+                  <Form.Label>Bio:  </Form.Label>
+                  <Form.Check inline type="checkbox" label="   Show?"/>
+                  <Form.Control type="text" placeholder={user.bio} />
+                </Form.Group>
+                <Form.Group controlId="formPhone">
+                  <Form.Label>Phone Number: </Form.Label>
+                  <Form.Check inline type="checkbox" label="   Show?"/>
+                  <Form.Control type="phone" placeholder={user.phone_number} />
+                </Form.Group>
+              </Card>
             </Form>
           );
         })}
