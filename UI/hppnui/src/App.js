@@ -38,7 +38,7 @@ function App() {
             <Nav.Item>
               <Link to="/MapEventsPage" className="nav-link">
                 <Icon.GeoAlt />
-              </Link>
+              </Link> 
             </Nav.Item>
             <Nav.Item>
               <Link to="/MapPage" className="nav-link">

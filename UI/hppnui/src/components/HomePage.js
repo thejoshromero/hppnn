@@ -3,6 +3,8 @@ import api from "../services/api";
 
 import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import HppnnLogoBig from "../HppnnLogoBig";
 
 
@@ -27,7 +29,13 @@ const HomePage = () => {
 
     return (
        <Container fill>
+         <Row>
+           <Col/>
+           <Col>
            <HppnnLogoBig className="App-logo" align="center"/>
+           </Col>
+           <Col/>
+           </Row>
            <h2>Your Events</h2>
 <ListGroup>
 {events &&
