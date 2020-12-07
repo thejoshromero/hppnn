@@ -6,6 +6,7 @@ import CardDeck from "react-bootstrap/CardDeck";
 import Container from "react-bootstrap/Container";
 import HppnnLogo from "../HppnnLogo";
 
+
 const MapPage = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [users, setUsers] = useState(null);
@@ -32,7 +33,7 @@ const MapPage = () => {
     <Container className="App">
       <input
         type="text"
-        placeholder="Search"
+        placeholder="Search..."
         value={searchTerm}
         onChange={handleChange}
       />
