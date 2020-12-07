@@ -36,7 +36,7 @@ const MapPage = () => {
         value={searchTerm}
         onChange={handleChange}
       />
-<CardDeck style={{display: 'flex', flexDirection: 'row'}}>
+
       {results &&
         results.map((item) => (
           <Card border="primary" style={{flex: 1}}>
@@ -53,7 +53,7 @@ const MapPage = () => {
             </Card.Body>
           </Card>
         ))}
-        </CardDeck>
+      
     </Container>
   );
 };
