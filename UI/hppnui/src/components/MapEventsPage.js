@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import Jumbotron from "react-bootstrap/Jumbotron";
+import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import * as Icon from "react-bootstrap-icons";
 import Container from "react-bootstrap/Container";
@@ -155,6 +155,7 @@ const MapEventsPage = () => {
             );
           })}
       </Carousel>
+    <Button onClick={()=>alert("need to implement")}>Add Event</Button>
     </Container>
   );
 };
