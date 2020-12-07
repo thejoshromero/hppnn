@@ -62,7 +62,7 @@ const MapEventsPage = () => {
     getEvents();
   }, []);
   return (
-    <Container >
+    <Container style={{ height: "95%" }}>
       <div>
       <Row>
            <Col/>

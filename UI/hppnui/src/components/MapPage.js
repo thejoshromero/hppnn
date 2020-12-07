@@ -29,7 +29,7 @@ const MapPage = () => {
   }, []);
 
   return (
-    <Container className="App">
+    <Container className="App" style={{ height: "95%" }}>
       <input
         type="text"
         placeholder="Search"

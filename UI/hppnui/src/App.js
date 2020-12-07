@@ -25,7 +25,7 @@ function App() {
           <Route component={Error} />
         </Switch>
 
-        <Navbar justify bg="dark" variant="dark" sticky="bottom">
+        <Navbar justify bg="dark" variant="dark" fixed="bottom">
         <Navbar.Brand href="/HomePage">
         
         </Navbar.Brand>
