@@ -41,7 +41,8 @@ const MapPage = () => {
         results.map((item) => (
           <Card border="primary" style={{flex: 1}}>
             <Card.Header as="h5">
-              <HppnnLogo className="App-logo-marker" /> {item.user_name}
+              {item.user_name}
+              &nbsp;
               <img src={item.image_source} alt="UserPic" className="App-logo-small"/>
             </Card.Header>
             <Card.Body>
