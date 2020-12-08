@@ -20,9 +20,9 @@ const MapPage = () => {
   const results = !searchTerm
     ? users
     : users.filter((user) =>
-        user.user_name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
-      );
-
+        user.user_name.toLowerCase().includes(searchTerm.toLocaleLowerCase())      
+        );
+  
   const getUsers = async () => {
     const response = await api.service("users").find({});
     setUsers(response.data);
@@ -33,7 +33,7 @@ const MapPage = () => {
   }, []);
 
   return (
-    <Container className="App" style={{ height: "95%" }}>
+    <Container className="App" style={{ height: "100%" }, {paddingBottom: "75px"}}>
       <Row>
            <Col/>
            <Col>
@@ -48,13 +48,13 @@ const MapPage = () => {
         onChange={handleChange}
       />
 
-      {results &&
+      {results && 
         results.map((item) => (
-          <Card border="primary" style={{flex: 1}}>
+          <Card border="primary" style={{ flex: 1 }}>
             <Card.Header as="h5">
               {item.user_name}
               &nbsp;
-              <img src={item.image_source} alt="UserPic" className="App-logo-small"/>
+              <img src={item.image_source} alt="UserPic" className="App-logo-small" />
             </Card.Header>
             <Card.Body>
               <Card.Subtitle className="mb-2 text-muted">
