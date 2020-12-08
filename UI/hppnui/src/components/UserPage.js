@@ -9,6 +9,9 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 import Container from "react-bootstrap/Container";
 import HppnnLogo from "../HppnnLogo";
+import Row from "react-bootstrap/Row";
+import HppnnLogoBig from "../HppnnLogoBig";
+
 const UserPage = () => {
   const [users, setUsers] = useState(null);
   const getUsers = async () => {
@@ -22,6 +25,13 @@ const UserPage = () => {
 
   return (
     <Container fluid="sm">
+      <Row>
+           <Col/>
+           <Col>
+           <HppnnLogoBig className="App-logo" align="center"/>
+           </Col>
+           <Col/>
+           </Row>
       {users &&
         users.map((user, index) => {
           const uname = user.user_name;
@@ -31,7 +41,7 @@ const UserPage = () => {
             <Form>
               <Card border="success">
                 <Card.Header align="center">
-                  <HppnnLogo className="App-logo-small" />{" "}
+                  
                   <Image
                     src={uimg}
                     alt="userimg"
