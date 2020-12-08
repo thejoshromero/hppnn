@@ -5,6 +5,9 @@ import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
 import Container from "react-bootstrap/Container";
 import HppnnLogo from "../HppnnLogo";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import HppnnLogoBig from "../HppnnLogoBig";
 
 
 const MapPage = () => {
@@ -31,6 +34,13 @@ const MapPage = () => {
 
   return (
     <Container className="App" style={{ height: "95%" }}>
+      <Row>
+           <Col/>
+           <Col>
+           <HppnnLogoBig className="App-logo" align="center"/>
+           </Col>
+           <Col/>
+           </Row>
       <input
         type="text"
         placeholder="Search..."
