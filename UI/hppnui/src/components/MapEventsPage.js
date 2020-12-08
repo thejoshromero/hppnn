@@ -119,7 +119,13 @@ const MapEventsPage = () => {
                               rounded
                             />
                             <Carousel.Caption align="center">
-                              <div>
+                              <div style={{
+                            color: "white",
+                            backgroundColor: "Gray",
+                            padding: ".5px",
+                            width: "100%",
+                            opacity: .75,
+                          }}>
                                 <Card.Subtitle className="mb-2 text">
                                   {event.description}
                                 </Card.Subtitle>
