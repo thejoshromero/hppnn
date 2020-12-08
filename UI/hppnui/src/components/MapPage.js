@@ -20,7 +20,7 @@ const MapPage = () => {
   const results = !searchTerm
     ? users
     : users.filter((user) =>
-        user.user_name.toLowerCase().includes(searchTerm.toLocaleLowerCase())      
+        user.user_name.toLowerCase().includes(searchTerm.toLocaleLowerCase()) || user.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())    
         );
   
   const getUsers = async () => {
