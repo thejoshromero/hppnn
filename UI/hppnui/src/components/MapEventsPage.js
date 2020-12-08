@@ -70,7 +70,7 @@ const MapEventsPage = () => {
               //var endTime2 = new Moment(stTime, 'DD-MM-YYYY').add('month', 1);
               return (
                 <div>
-                  <Icon.GeoAlt />
+                 
                   <Marker
                     longitude={event.geo_location.coordinates[1]}
                     latitude={event.geo_location.coordinates[0]}
@@ -95,10 +95,19 @@ const MapEventsPage = () => {
                       <Toast.Header>
                         <HppnnLogo className="App-logo-marker" />
                         <strong className="mr-auto">{event.name}</strong>
-                        <small>
+                        
+                        <h6>
                           <Moment format="MMM DD" date={event.start_time} />
                           &nbsp;{" "}
-                        </small>
+                        </h6>
+                        <Icon.PlusCircleFill  onClick={() => alert("need to implement")}
+                        style={{
+                          color: "blueviolet",
+                          height: 20,
+                        }}
+                          alignment="center"
+                        >
+                          Add Event</Icon.PlusCircleFill>
                       </Toast.Header>
                       <Toast.Body>
                         <Carousel
@@ -175,12 +184,7 @@ const MapEventsPage = () => {
                             </Carousel.Caption>
                           </Carousel.Item>
                         </Carousel>
-                        <Button
-                          onClick={() => alert("need to implement")}
-                          alignment="center"
-                        >
-                          Add Event
-                        </Button>
+                       
                       </Toast.Body>
                     </Toast>
                   </Marker>
