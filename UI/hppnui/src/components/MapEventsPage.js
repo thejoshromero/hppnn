@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import * as Icon from "react-bootstrap-icons";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 import api from "../services/api";
 import HppnnLogoBig from "../HppnnLogoBig";
 import HppnnLogo from "../HppnnLogo";
@@ -22,8 +23,8 @@ const MapEventsPage = () => {
   const [show, setShow] = useState([]);
   const [showA, setShowA] = useState(true);
   const [viewport, setViewport] = useState({
-    width: "100%",
-    height: 400,
+    width: "90vw",
+    height: "75vh",
     latitude: 38.4351,
     longitude: -78.8698,
     zoom: 11,
@@ -34,56 +35,27 @@ const MapEventsPage = () => {
     setEvents(response.data);
   };
 
-  const CustomPopup = ({ index, marker, closePopup }) => {
-    return (
-      <Popup
-        latitude={marker.latitude}
-        longitude={marker.longitude}
-        onClose={closePopup}
-        closeButton={false}
-        closeOnClick={false}
-        offsetTop={-30}
-      >
-        <p>{marker.name}</p>
-      </Popup>
-    );
-  };
-
-  const CustomMarker = ({ index, marker, openPopup }) => {
-    return (
-      <Marker longitude={marker.longitude} latitude={marker.latitude}>
-        <div className="marker" onClick={() => openPopup(index)}>
-          <span>
-            <b>{index + 1}</b>
-          </span>
-        </div>
-      </Marker>
-    );
-  };
-
   useEffect(() => {
     getEvents();
   }, []);
 
   useEffect(() => {
-    setShow(events.map(() => true));
+    setShow(events.map(() => false));
   }, [events]);
   return (
-    <Container style={{ height: "95%" }}>
+    <Container >
       <div>
-        <Row>
-          <Col />
-          <Col>
-            <HppnnLogoBig className="App-logo-title"></HppnnLogoBig>
-          </Col>
-          <Col />
+        <Row justify>
+          <HppnnLogoBig className="App-logo-title"></HppnnLogoBig>
         </Row>
+        <Row justify>
         <link
           href="https://api.tiles.mapbox.com/mapbox-gl-js/v<1.12.0>/mapbox-gl.css"
           rel="stylesheet"
         />
 
         <ReactMapGL
+          
           id="map"
           mapboxApiAccessToken="pk.eyJ1Ijoienp1a293c2tpIiwiYSI6ImNraG8zeW12MTA2b24yeG1qYmJhb3czeXYifQ.r9bVmL1zpRLXkfOSHVgi8g"
           mapStyle="mapbox://styles/mapbox/outdoors-v11"
@@ -102,11 +74,15 @@ const MapEventsPage = () => {
                   <Marker
                     longitude={event.geo_location.coordinates[1]}
                     latitude={event.geo_location.coordinates[0]}
-                    closeButton={false}
-                    closeOnClick={false}
                     anchor="top"
                   >
-                    <Icon.GeoAlt />
+                    <Icon.GeoAlt
+                      onClick={() => {
+                        const newShow = [...show];
+                        newShow[index] = true;
+                        setShow(newShow);
+                      }}
+                    />
 
                     <Toast
                       onClose={() => {
@@ -123,72 +99,93 @@ const MapEventsPage = () => {
                           <Moment format="MMM DD" date={event.start_time} />
                           &nbsp;{" "}
                         </small>
-                        <small>
-                          <Moment format="hh:mm" date={event.start_time} /> to{" "}
-                          <Moment
-                            format="hh:mm"
-                            date={event.start_time}
-                            add={{ hours: 3 }}
-                          />{" "}
-                        </small>
                       </Toast.Header>
-                      <Toast.Body>{event.description}</Toast.Body>
+                      <Toast.Body>
+                        <Carousel
+                          align="center"
+                          style={{
+                            color: "white",
+                            backgroundColor: "Gray",
+                            padding: ".5px",
+                            width: "100%",
+                          }}
+                        >
+                          {" "}
+                          <Carousel.Item style={{ height: "150px" }}>
+                            <Image
+                              src={event.image_source}
+                              alt="For Event"
+                              style={{ height: "100%" }}
+                              rounded
+                            />
+                            <Carousel.Caption align="center">
+                              <div>
+                                <Card.Subtitle className="mb-2 text">
+                                  {event.description}
+                                </Card.Subtitle>
+                                <Card.Text className="mb-2 text">
+                                  {event.city}
+                                </Card.Text>
+                              </div>
+                            </Carousel.Caption>
+                          </Carousel.Item>
+                          <Carousel.Item
+                            style={{
+                              color: "white",
+                              backgroundColor: "Gray",
+                              padding: ".5px",
+                              width: "100%",
+                              height: 150,
+                            }}
+                          >
+                            <Carousel.Caption align="center">
+                              <div>
+                                <Card.Text className="mb-2 text">
+                                  <h5>
+                                    <Moment
+                                      format="MMM DD"
+                                      date={event.start_time}
+                                    />
+                                    &nbsp;{" "}
+                                  </h5>
+                                  <h5>
+                                    <Moment
+                                      format="hh:mm"
+                                      date={event.start_time}
+                                    />{" "}
+                                    to{" "}
+                                    <Moment
+                                      format="hh:mm"
+                                      date={event.start_time}
+                                      add={{ hours: dur }}
+                                    />{" "}
+                                  </h5>
+                                  <p>
+                                    Limited to :&nbsp;&nbsp;
+                                    {event.attendee_limit}
+                                  </p>
+                                </Card.Text>
+                              </div>
+                            </Carousel.Caption>
+                          </Carousel.Item>
+                        </Carousel>
+                        <Button
+                          onClick={() => alert("need to implement")}
+                          alignment="center"
+                        >
+                          Add Event
+                        </Button>
+                      </Toast.Body>
                     </Toast>
                   </Marker>
                 </div>
               );
             })}
         </ReactMapGL>
+        </Row>
       </div>
       <br />
-      <Carousel
-        align="center"
-        style={{
-          color: "white",
-          backgroundColor: "Gray",
-          padding: ".5px",
-          width: "100%",
-        }}
-      >
-        {events &&
-          events.map((event, index) => {
-            return (
-              <Carousel.Item style={{ height: "300px" }}>
-                <img
-                  src={event.image_source}
-                  alt="For Event"
-                  style={{ height: "300px" }}
-                />
-                <Carousel.Caption align="center">
-                  <Container
-                    style={{
-                      opacity: "80%",
-                      height: "50%",
-                      width: "50%",
-                      align: "center",
-                      background: "gray",
-                    }}
-                    align="center"
-                  >
-                    <h5 style={{ color: "blue", "font-family": "Courier New" }}>
-                      <HppnnLogo className="App-logo-marker" /> {event.name}
-                    </h5>
-                    <div>
-                      <Card.Subtitle className="mb-2 text">
-                        {event.description}
-                      </Card.Subtitle>
-                      <Card.Text className="mb-2 text">{event.city}</Card.Text>
-                      <Card.Link href="#">Add Event</Card.Link>
-                    </div>
-                  </Container>
-                </Carousel.Caption>
-              </Carousel.Item>
-            );
-          })}
-      </Carousel>
-      <Button onClick={() => alert("need to implement")} alignment="center">
-        Add Event
-      </Button>
+     
     </Container>
   );
 };
