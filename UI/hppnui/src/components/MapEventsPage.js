@@ -58,8 +58,9 @@ const MapEventsPage = () => {
           href="https://api.tiles.mapbox.com/mapbox-gl-js/v<1.12.0>/mapbox-gl.css"
           rel="stylesheet"
         />
-
+<Card border="danger">
         <ReactMapGL
+          
           
           id="map"
           mapboxApiAccessToken="pk.eyJ1Ijoienp1a293c2tpIiwiYSI6ImNraG8zeW12MTA2b24yeG1qYmJhb3czeXYifQ.r9bVmL1zpRLXkfOSHVgi8g"
@@ -200,6 +201,7 @@ const MapEventsPage = () => {
               );
             })}
         </ReactMapGL>
+        </Card>
         </Row>
       </div>
       <br />
