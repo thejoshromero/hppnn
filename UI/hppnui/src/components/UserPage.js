@@ -87,6 +87,7 @@ const UserPage = () => {
                   <Col>
                 <Form.Group controlId="formName">
                   <Form.Label>Name:  </Form.Label>
+                  &nbsp;
                   <Form.Check inline type="checkbox" label="   Show?"/>
                     
                 
@@ -96,11 +97,13 @@ const UserPage = () => {
                 </Form.Row>
                 <Form.Group controlId="formBio">
                   <Form.Label>Bio:  </Form.Label>
+                  &nbsp;
                   <Form.Check inline type="checkbox" label="   Show?"/>
                   <Form.Control type="text" placeholder={user.bio} />
                 </Form.Group>
                 <Form.Group controlId="formPhone">
                   <Form.Label>Phone Number: </Form.Label>
+                  &nbsp;
                   <Form.Check inline type="checkbox" label="   Show?"/>
                   <Form.Control type="phone" placeholder={user.phone_number} />
                 </Form.Group>
