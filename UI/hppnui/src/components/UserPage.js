@@ -45,8 +45,6 @@ const UserPage = () => {
                   <Image
                     src={uimg}
                     alt="userimg"
-                    // height={200}
-                    // width={200}
                     className="User-Image"
                     roundedCircle
                   />

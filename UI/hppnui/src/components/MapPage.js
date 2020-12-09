@@ -8,6 +8,7 @@ import HppnnLogo from "../HppnnLogo";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import HppnnLogoBig from "../HppnnLogoBig";
+import Image from "react-bootstrap/Image";
 
 
 const MapPage = () => {
@@ -54,7 +55,7 @@ const MapPage = () => {
             <Card.Header as="h5">
               {item.user_name}
               &nbsp;
-              <img src={item.image_source} alt="UserPic" className="App-logo-small" />
+              <Image src={item.image_source} alt="UserPic" className="App-pic-small" roundedCircle />
             </Card.Header>
             <Card.Body>
               <Card.Subtitle className="mb-2 text-muted">
