@@ -39,7 +39,7 @@ const UserPage = () => {
 
           return (
             <Form>
-              <Card border="success">
+              <Card border="secondary">
                 <Card.Header align="center">
                   
                   <Image

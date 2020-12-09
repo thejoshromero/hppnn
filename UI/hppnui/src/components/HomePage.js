@@ -41,7 +41,7 @@ const HomePage = () => {
 {events &&
             events.map((event, index) => {
               return (
-                <ListGroup.Item>
+                <ListGroup.Item action variant="light">
                  
                     {event.name}
                   
@@ -55,7 +55,7 @@ const HomePage = () => {
 {events2 &&
             events2.map((event, index) => {
               return (
-                <ListGroup.Item>
+                <ListGroup.Item action variant="light">
                  
                     {event.name}
                   

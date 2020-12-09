@@ -50,7 +50,7 @@ const MapPage = () => {
 
       {results && 
         results.map((item) => (
-          <Card border="primary" style={{ flex: 1 }}>
+          <Card border="secondary" style={{ flex: 1 }}>
             <Card.Header as="h5">
               {item.user_name}
               &nbsp;
