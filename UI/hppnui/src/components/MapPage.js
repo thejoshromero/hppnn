@@ -10,7 +10,6 @@ import Col from "react-bootstrap/Col";
 import HppnnLogoBig from "../HppnnLogoBig";
 import Image from "react-bootstrap/Image";
 
-
 const MapPage = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [users, setUsers] = useState(null);
@@ -55,7 +54,7 @@ const MapPage = () => {
             <Card.Header as="h5">
               {item.user_name}
               &nbsp;
-              <Image src={item.image_source} alt="UserPic" className="App-pic-small" roundedCircle />
+              <Image src={item.image_source} alt="UserPic" className="App-logo-small" roundedCircle />
             </Card.Header>
             <Card.Body>
               <Card.Subtitle className="mb-2 text-muted">
