@@ -46,7 +46,11 @@ const MapEventsPage = () => {
     <Container >
       <div>
         <Row justify>
-          <HppnnLogoBig className="App-logo-title"></HppnnLogoBig>
+        <Col/>
+        <Col>
+          <HppnnLogoBig className="App-logo" align="center"></HppnnLogoBig>
+        </Col>
+        <Col/>
         </Row>
         <Row justify>
         <link
