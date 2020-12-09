@@ -28,6 +28,7 @@ const MapEventsPage = () => {
     latitude: 38.4351,
     longitude: -78.8698,
     zoom: 11,
+    pitch: 60,
   });
 
   const getEvents = async () => {
@@ -76,7 +77,10 @@ const MapEventsPage = () => {
                     latitude={event.geo_location.coordinates[0]}
                     anchor="top"
                   >
-                    <Icon.GeoAlt
+                    <Icon.GeoFill style={{
+                          color: "blueviolet",
+                          
+                        }}
                       onClick={() => {
                         const newShow = [...show];
                         newShow[index] = true;
